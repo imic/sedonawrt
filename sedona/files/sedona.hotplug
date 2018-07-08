@@ -1,0 +1,30 @@
+#!/bin/sh
+
+. /etc/functions.sh
+
+SVM=`which svm`
+
+start_sedona() {
+	logger starting sedona
+        cd /opt/sedona
+        $SVM --plat --> /dev/null &
+}
+
+stop_sedona() {
+	logger stopping sedona
+	killall svm
+}
+
+SVM_RUNNING=`ps  | grep $SVM | grep -v grep`
+
+case "${ACTION:-ifup}" in
+	ifup)
+		[ -z "$SVM_RUNNING" ] && start_sedona 
+	;;
+	ifdown)
+		[ -n "$SVM_RUNNING" ] && stop_sedona 
+	;;
+esac
+
+
+

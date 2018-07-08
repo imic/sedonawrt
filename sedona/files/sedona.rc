@@ -1,0 +1,14 @@
+#!/bin/sh /etc/rc.common
+
+START=31
+STOP=31
+
+start() {
+	#start sedona
+	ps | grep "sbin.sedona" | grep -v "grep" | awk '{ print $1 }' | xargs -r kill -9
+	ACTION=ifup /etc/hotplug.d/iface/30-sedona
+}
+
+stop() {
+	killall svm
+}
