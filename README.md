@@ -1,4 +1,4 @@
-https://code.google.com/archive/p/sedonawrt/downloads
+https://code.google.com/archive/p/sedonawrt/
 
 
 Files for cross compiling the Sedona VM and creating an OpenWrt package
